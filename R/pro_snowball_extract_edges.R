@@ -1,8 +1,8 @@
-#' A function to perform a snowball search and convert the result to a
-#' tibble/data frame.
-#' @param identifier Character vector of openalex identifiers.
-#' @param doi Character vector of dois.
-#' @param output parquet dataset; default: temporary directory.
+#' A function to extract the edges from a parquet database containing the nodes
+#'
+#' @param nodes Path to the nodes parquet dataset
+#' @param output output folder, in which the parquet database containing the
+#'   edges called `edges` will be savedp default: temporary directory.
 #' @param verbose Logical indicating whether to show a verbose information.
 #'   Defaults to `FALSE`
 #'
@@ -25,7 +25,7 @@
 #'
 #' @examples \dontrun{
 #'
-#' snowball_docs <- pro_snowball( identifier = c("W2741809807", "W2755950973"),
+#' snowball_docs <- pro_snowball( = c("W2741809807", "W2755950973"),
 #' citing_params = list(from_publication_date = "2022-01-01"), cited_by_params =
 #' list(), verbose = TRUE )
 #'
@@ -33,41 +33,59 @@
 #' oa_snowball( doi = c("10.1016/j.joi.2017.08.007", "10.7717/peerj.4375"),
 #' citing_params = list(from_publication_date = "2022-01-01"), cited_by_params =
 #' list(), verbose = TRUE ) }
-pro_snowball <- function(
-  identifier = NULL,
-  doi = NULL,
+pro_snowball_extract_edges <- function(
+  nodes = NULL,
   output = tempfile(fileext = ".snowball"),
   verbose = FALSE
 ) {
-  if (!xor(is.null(identifier), is.null(doi))) {
-    stop("Either `identifier` or `doi` needs to be specified!")
-  }
-
   output <- normalizePath(output, mustWork = FALSE)
 
-  if (dir.exists(output)) {
+  edges <- file.path(output, "edges")
+
+  if (file.exists(edges)) {
     if (verbose) {
       message(
         "Deleting and recreating `",
-        output,
+        edges,
         "` to avoid inconsistencies."
       )
     }
-    unlink(output, recursive = TRUE)
-    dir.create(output, recursive = TRUE)
+    unlink(edges, recursive = TRUE)
+    dir.create(edges, recursive = TRUE)
   }
 
-  pro_snowball_get_nodes(
-    identifier = identifier,
-    doi = doi,
-    output = output,
-    verbose = verbose
+  # Extract Edges -------------------------------------------------
+
+  con <- DBI::dbConnect(duckdb::duckdb())
+
+  on.exit(
+    DBI::dbDisconnect(con, shutdown = TRUE)
+  )
+
+  arrow::open_dataset(nodes) |>
+    duckdb::duckdb_register_arrow(
+      conn = con,
+      name = "nodes"
+    )
+
+  system.file("extract_edges.sql", package = "openalexPro2") |>
+    load_sql_file() |>
+    DBI::dbExecute(conn = con)
+
+  # Create edges ---------------------------------------------------
+
+  paste0(
+    "COPY ( ",
+    "   SELECT DISTINCT ",
+    "       * ",
+    "   FROM ",
+    "       edges",
+    ") TO '",
+    edges,
+    "' ",
+    "(FORMAT PARQUET, COMPRESSION SNAPPY, PARTITION_BY (edge_type))"
   ) |>
-    pro_snowball_extract_edges(
-      output = output,
-      verbose = verbose
-    ) |>
-    invisible()
+    DBI::dbExecute(conn = con)
 
   # Return path to snowball ------------------------------------------------
 
