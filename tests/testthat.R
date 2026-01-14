@@ -1,4 +1,4 @@
 library(testthat)
-library(openalexPro)
+library(openalexSnowball)
 
-test_check("openalexPro")
+test_check("openalexSnowball")
