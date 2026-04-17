@@ -19,7 +19,7 @@ Imports:
     duckdb,
     rlang
 Additional_repositories:
-    https://ropensci.r-universe.dev
+    https://rkrug.r-universe.dev
 Suggests:
     keyring,
     knitr,
