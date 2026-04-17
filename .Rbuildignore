@@ -12,3 +12,6 @@
 ^vignettes/*_files$
 ^doc$
 ^Meta$
+^CLAUDE\.md$
+^skills$
+^\.claude$
