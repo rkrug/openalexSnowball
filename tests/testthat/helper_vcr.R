@@ -14,13 +14,10 @@ invisible(vcr::vcr_configure(
 ))
 
 try(
-  options(openalexR.apikey = keyring::key_get("API_openalex")),
+  Sys.setenv(openalexPro.apikey = keyring::key_get("API_openalex")),
+  silent = TRUE
 )
 
-if (is.null(openalexPro::oap_apikey())) {
-
-  options(openalexR.apikey = "<api-key>")
-}
-if (is.null(openalexPro::oap_mail())) {
-  options(openalexR.mailto = "rainer@krugs.de")
+if (Sys.getenv("openalexPro.apikey") == "") {
+  Sys.setenv(openalexPro.apikey = "<api-key>")
 }
