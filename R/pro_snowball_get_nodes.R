@@ -72,22 +72,22 @@ pro_snowball_get_nodes <- function(
 
   ifelse(
     !is.null(identifier),
-    qu <- pro_query(
+    qu <- openalexPro::pro_query(
       openalex = identifier,
       entity = "works"
     ),
-    qu <- pro_query(
+    qu <- openalexPro::pro_query(
       doi = doi,
       entity = "works"
     )
   )
-  x <- pro_request(
+  x <- openalexPro::pro_request(
     query_url = qu,
     output = file.path(output, "keypaper_json"),
     verbose = verbose,
     progress = verbose
   )
-  x <- pro_request_jsonl(
+  x <- openalexPro::pro_request_jsonl(
     input_json = x,
     output = file.path(output, "keypaper_jsonl"),
     add_columns = list(
@@ -96,7 +96,7 @@ pro_snowball_get_nodes <- function(
     ),
     verbose = verbose
   )
-  pro_request_jsonl_parquet(
+  openalexPro::pro_request_jsonl_parquet(
     input_jsonl = x,
     output = file.path(output, "keypaper_parquet"),
     verbose = verbose
@@ -127,16 +127,16 @@ pro_snowball_get_nodes <- function(
       )
     }
 
-    pro_query(
+    openalexPro::pro_query(
       cites = keypaper_ids,
       entity = "works"
     ) |>
-      pro_request(
+      openalexPro::pro_request(
         output = file.path(output, "citing_json"),
         verbose = verbose,
         progress = verbose
       ) |>
-      pro_request_jsonl(
+      openalexPro::pro_request_jsonl(
         output = file.path(output, "citing_jsonl"),
         add_columns = list(
           oa_input = FALSE,
@@ -155,16 +155,16 @@ pro_snowball_get_nodes <- function(
       )
     }
 
-    cited_parquet <- pro_query(
+    cited_parquet <- openalexPro::pro_query(
       cited_by = keypaper_ids,
       entity = "works"
     ) |>
-      pro_request(
+      openalexPro::pro_request(
         output = file.path(output, "cited_json"),
         verbose = verbose,
         progress = verbose
       ) |>
-      pro_request_jsonl(
+      openalexPro::pro_request_jsonl(
         output = file.path(output, "cited_jsonl"),
         add_columns = list(
           oa_input = FALSE,

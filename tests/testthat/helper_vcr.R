@@ -17,9 +17,10 @@ try(
   options(openalexR.apikey = keyring::key_get("API_openalex")),
 )
 
-if (is.null(oap_apikey())) {
+if (is.null(openalexPro::oap_apikey())) {
+
   options(openalexR.apikey = "<api-key>")
 }
-if (is.null(oap_mail())) {
+if (is.null(openalexPro::oap_mail())) {
   options(openalexR.mailto = "rainer@krugs.de")
 }

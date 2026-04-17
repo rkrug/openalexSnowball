@@ -76,8 +76,8 @@ pro_snowball_extract_edges <- function(
       name = "nodes"
     )
 
-  system.file("extract_edges.sql", package = "openalexPro") |>
-    load_sql_file() |>
+  system.file("extract_edges.sql", package = "openalexSnowball") |>
+    openalexPro::load_sql_file() |>
     DBI::dbExecute(conn = con)
 
   # Create edges ---------------------------------------------------

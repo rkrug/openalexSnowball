@@ -1,0 +1,35 @@
+Type: Package
+Package: openalexSnowball
+Title: Snowball searches for OpenAlex using the openalexPro pipeline
+Version: 0.1.0
+Author: Rainer M Krug
+Maintainer: Rainer M Krug <Rainer@krugs.de>
+Description: Perform snowball searches on the OpenAlex citation graph using
+    openalexPro's on-disk processing pipeline and store results in Parquet.
+URL: https://github.com/rkrug/openalexSnowball, https://rkrug.github.io/openalexSnowball/
+BugReports: https://github.com/rkrug/openalexSnowball/issues
+License: GPL (>= 2)
+Depends:
+    R (>= 4.1.1)
+Imports:
+    openalexPro (>= 0.4.0),
+    arrow,
+    DBI,
+    dplyr,
+    duckdb,
+    rlang
+Additional_repositories:
+    https://ropensci.r-universe.dev
+Suggests:
+    keyring,
+    knitr,
+    openalexR (>= 1.4.0),
+    rmarkdown,
+    quarto,
+    testthat (>= 3.0.0),
+    vcr (> 1.7.0),
+    vdiffr
+Encoding: UTF-8
+RoxygenNote: 7.3.3
+VignetteBuilder: quarto
+Config/testthat/edition: 3

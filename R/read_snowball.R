@@ -45,7 +45,7 @@ read_snowball <- function(
 
   # Nodes ------------------------------------------------------------------
 
-  nodes <- read_corpus(
+  nodes <- openalexPro::read_corpus(
     corpus = file.path(snowball, "nodes"),
     return_data = FALSE
   ) |>
@@ -63,7 +63,7 @@ read_snowball <- function(
 
   # Edges ------------------------------------------------------------------
 
-  edges <- read_corpus(
+  edges <- openalexPro::read_corpus(
     corpus = file.path(snowball, "edges"),
     return_data = FALSE
   ) |>

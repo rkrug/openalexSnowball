@@ -1,0 +1,14 @@
+^\.git$
+^\.github$
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.vscode$
+^README\.qmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^codecov\.yml$
+^vignettes/\.quarto$
+^vignettes/*_files$
+^doc$
+^Meta$
