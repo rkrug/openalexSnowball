@@ -18,6 +18,7 @@ try(
 )
 
 if (is.null(openalexPro::oap_apikey())) {
+
   options(openalexR.apikey = "<api-key>")
 }
 if (is.null(openalexPro::oap_mail())) {
