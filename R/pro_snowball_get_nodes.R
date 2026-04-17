@@ -73,7 +73,7 @@ pro_snowball_get_nodes <- function(
   ifelse(
     !is.null(identifier),
     qu <- openalexPro::pro_query(
-      openalex = identifier,
+      id = identifier,
       entity = "works"
     ),
     qu <- openalexPro::pro_query(

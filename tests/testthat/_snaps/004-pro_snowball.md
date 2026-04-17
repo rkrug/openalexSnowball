@@ -17,26 +17,27 @@
        [7] "biblio"                         "citation"                      
        [9] "citation_normalized_percentile" "cited_by_count"                
       [11] "cited_by_percentile_year"       "concepts"                      
-      [13] "corresponding_author_ids"       "corresponding_institution_ids" 
-      [15] "countries_distinct_count"       "counts_by_year"                
-      [17] "created_date"                   "display_name"                  
-      [19] "doi"                            "funders"                       
-      [21] "fwci"                           "grants"                        
-      [23] "has_content"                    "id"                            
-      [25] "ids"                            "indexed_in"                    
-      [27] "institutions"                   "institutions_distinct_count"   
-      [29] "is_paratext"                    "is_retracted"                  
-      [31] "is_xpac"                        "keywords"                      
-      [33] "language"                       "locations"                     
-      [35] "locations_count"                "mesh"                          
-      [37] "oa_input"                       "open_access"                   
-      [39] "page"                           "primary_location"              
-      [41] "primary_topic"                  "publication_date"              
-      [43] "publication_year"               "referenced_works"              
-      [45] "referenced_works_count"         "related_works"                 
-      [47] "relation"                       "sustainable_development_goals" 
-      [49] "title"                          "topics"                        
-      [51] "type"                           "updated_date"                  
+      [13] "content_urls"                   "corresponding_author_ids"      
+      [15] "corresponding_institution_ids"  "countries_distinct_count"      
+      [17] "counts_by_year"                 "created_date"                  
+      [19] "display_name"                   "doi"                           
+      [21] "funders"                        "fwci"                          
+      [23] "has_content"                    "has_fulltext"                  
+      [25] "id"                             "ids"                           
+      [27] "indexed_in"                     "institutions"                  
+      [29] "institutions_distinct_count"    "is_paratext"                   
+      [31] "is_retracted"                   "is_xpac"                       
+      [33] "keywords"                       "language"                      
+      [35] "locations"                      "locations_count"               
+      [37] "mesh"                           "oa_input"                      
+      [39] "open_access"                    "page"                          
+      [41] "primary_location"               "primary_topic"                 
+      [43] "publication_date"               "publication_year"              
+      [45] "referenced_works"               "referenced_works_count"        
+      [47] "related_works"                  "relation"                      
+      [49] "sustainable_development_goals"  "title"                         
+      [51] "topics"                         "type"                          
+      [53] "updated_date"                  
     Code
       nrow(results_openalexPro$edges)
     Output
@@ -50,13 +51,13 @@
       edge_type = "core")
     Output
       $nodes
-      # A tibble: 2 x 52
+      # A tibble: 2 x 53
         id     doi   title display_name publication_year publication_date ids$openalex
         <chr>  <chr> <chr> <chr>                   <int> <date>           <chr>       
       1 W3045~ http~ Meas~ Measuring p~             2020 2020-07-28       https://ope~
       2 W3046~ http~ Tren~ Trends of P~             2020 2020-08-01       https://ope~
-      # i 47 more variables: ids$doi <chr>, $mag <chr>, language <chr>,
-      #   primary_location <tibble[,11]>, type <chr>, indexed_in <list<character>>,
+      # i 48 more variables: ids$doi <chr>, $mag <chr>, language <chr>,
+      #   primary_location <tibble[,12]>, type <chr>, indexed_in <list<character>>,
       #   open_access <tibble[,4]>,
       #   authorships <list<
         tbl_df<
@@ -104,13 +105,13 @@
       edge_type = "extended")
     Output
       $nodes
-      # A tibble: 2 x 52
+      # A tibble: 2 x 53
         id     doi   title display_name publication_year publication_date ids$openalex
         <chr>  <chr> <chr> <chr>                   <int> <date>           <chr>       
       1 W3045~ http~ Meas~ Measuring p~             2020 2020-07-28       https://ope~
       2 W3046~ http~ Tren~ Trends of P~             2020 2020-08-01       https://ope~
-      # i 47 more variables: ids$doi <chr>, $mag <chr>, language <chr>,
-      #   primary_location <tibble[,11]>, type <chr>, indexed_in <list<character>>,
+      # i 48 more variables: ids$doi <chr>, $mag <chr>, language <chr>,
+      #   primary_location <tibble[,12]>, type <chr>, indexed_in <list<character>>,
       #   open_access <tibble[,4]>,
       #   authorships <list<
         tbl_df<
@@ -158,13 +159,13 @@
       edge_type = c("extended", "core"))
     Output
       $nodes
-      # A tibble: 2 x 52
+      # A tibble: 2 x 53
         id     doi   title display_name publication_year publication_date ids$openalex
         <chr>  <chr> <chr> <chr>                   <int> <date>           <chr>       
       1 W3045~ http~ Meas~ Measuring p~             2020 2020-07-28       https://ope~
       2 W3046~ http~ Tren~ Trends of P~             2020 2020-08-01       https://ope~
-      # i 47 more variables: ids$doi <chr>, $mag <chr>, language <chr>,
-      #   primary_location <tibble[,11]>, type <chr>, indexed_in <list<character>>,
+      # i 48 more variables: ids$doi <chr>, $mag <chr>, language <chr>,
+      #   primary_location <tibble[,12]>, type <chr>, indexed_in <list<character>>,
       #   open_access <tibble[,4]>,
       #   authorships <list<
         tbl_df<
@@ -212,13 +213,13 @@
       edge_type = "outside")
     Output
       $nodes
-      # A tibble: 2 x 52
+      # A tibble: 2 x 53
         id     doi   title display_name publication_year publication_date ids$openalex
         <chr>  <chr> <chr> <chr>                   <int> <date>           <chr>       
       1 W3045~ http~ Meas~ Measuring p~             2020 2020-07-28       https://ope~
       2 W3046~ http~ Tren~ Trends of P~             2020 2020-08-01       https://ope~
-      # i 47 more variables: ids$doi <chr>, $mag <chr>, language <chr>,
-      #   primary_location <tibble[,11]>, type <chr>, indexed_in <list<character>>,
+      # i 48 more variables: ids$doi <chr>, $mag <chr>, language <chr>,
+      #   primary_location <tibble[,12]>, type <chr>, indexed_in <list<character>>,
       #   open_access <tibble[,4]>,
       #   authorships <list<
         tbl_df<
