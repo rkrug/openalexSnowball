@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Developer Skill
+
+All development in this repository follows the R package developer skill. Read and apply:
+
+- `skills/r-package-developer/SKILL.md` — workflow phases, non-negotiable rules, governance
+- `skills/r-package-developer/references/checklist.md` — pre-commit/merge execution gate
+- `skills/r-package-developer/references/commit-template.md` — commit message structure
+- `skills/r-package-developer/references/branch-protection-baseline.md` — branch rules
+- `skills/r-package-developer/references/agent-r-guidance.md` — R-specific agent guidance
+
+To sync the skill from upstream: `bash skills/r-package-developer/scripts/sync-from-github.sh`
+
 ## Project Overview
 
 **openalexSnowball** is an R package implementing citation network "snowball searches" on the OpenAlex academic graph. Starting from seed papers (keypapers), it follows citation links outward to retrieve papers that cite or are cited by the seeds, building a network graph stored as Apache Parquet files for memory-efficient on-disk processing.
