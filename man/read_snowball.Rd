@@ -8,7 +8,8 @@ read_snowball(
   snowball = NULL,
   edge_type = c("core", "extended", "outside"),
   return_data = FALSE,
-  shorten_ids = FALSE
+  shorten_ids = FALSE,
+  meta = FALSE
 )
 }
 \arguments{
@@ -31,6 +32,12 @@ shou,d be returned.}
 
 \item{shorten_ids}{If \code{TRUE} the ids will be shortened, i.e. the part
 \verb{https://openalex.org/} will be removed}
+
+\item{meta}{Also return provenance as a third list element \code{meta}: how the
+snowball was produced (\code{api} or \code{snapshot}), the snapshot path and the
+vintage of the citation index it was built from, the resolved keypapers,
+and package versions. Defaults to \code{FALSE}, which keeps the return shape
+\code{list(nodes, edges)}. The sidecar is written to disk either way.}
 }
 \value{
 A list containing two elements: nodes and edges, which are either

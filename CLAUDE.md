@@ -62,7 +62,7 @@ Three mutually-useful edge types:
 ### Key Design Patterns
 
 - **On-disk processing**: Arrow + DuckDB throughout; data is never fully loaded into R memory during the pipeline.
-- **Dependency on openalexPro**: `openalexPro` (>= 0.4.0) handles all API communication and JSON→Parquet conversion. openalexSnowball orchestrates calls to it.
+- **Dependency on openalexPro**: `openalexPro` (>= 0.10.2) handles all API communication and JSON→Parquet conversion. openalexSnowball orchestrates calls to it.
 - **NSE**: Uses `rlang` `.data` and `.env` pronouns in dplyr chains.
 
 ## Testing

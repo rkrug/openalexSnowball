@@ -1,7 +1,7 @@
 Type: Package
 Package: openalexSnowball
 Title: Snowball searches for OpenAlex using the openalexPro pipeline
-Version: 0.1.4
+Version: 0.12.0
 Author: Rainer M Krug
 Maintainer: Rainer M Krug <Rainer@krugs.de>
 Description: Perform snowball searches on the OpenAlex citation graph using
@@ -12,7 +12,8 @@ License: GPL (>= 2)
 Depends:
     R (>= 4.1.1)
 Imports:
-    openalexPro (>= 0.4.2),
+    openalexPro (>= 0.10.5),
+    openalexSnapshot (>= 0.2.0),
     arrow,
     DBI,
     dplyr,
@@ -28,8 +29,9 @@ Suggests:
     quarto,
     testthat (>= 3.0.0),
     vcr (> 1.7.0),
-    vdiffr
+    vdiffr,
+    withr
 Encoding: UTF-8
-RoxygenNote: 7.3.3
 VignetteBuilder: quarto
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0
